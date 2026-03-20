@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/Authcontext";
 import { submitStudentForm } from "../firebase/firestore";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 
 const initialState = {
   fullName: "", dob: "", phone: "", category: "",
