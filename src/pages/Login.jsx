@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../firebase/auth";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 
 const inp = {
   width: "100%",

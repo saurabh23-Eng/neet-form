@@ -3,7 +3,7 @@ import { useAuth } from "../context/Authcontext";
 import { getStudentData } from "../firebase/firestore";
 import { logoutUser } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 
 export default function Dashboard() {
   const { currentUser } = useAuth();
