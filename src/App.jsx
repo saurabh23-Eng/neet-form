@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import FormPage from "./pages/FormPage";
 import Dashboard from "./pages/Dashboard";
+import Signup from "./pages/signup";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/dashboard" element={
           <ProtectedRoute><Dashboard /></ProtectedRoute>
         } />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </AuthProvider>
   );
