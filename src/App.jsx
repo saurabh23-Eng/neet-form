@@ -4,7 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import FormPage from "./pages/FormPage";
 import Dashboard from "./pages/Dashboard";
-import Signup from "./pages/signup";
+import Signup from "./pages/Signup";
 
 export default function App() {
   return (
