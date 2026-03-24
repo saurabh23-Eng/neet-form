@@ -35,17 +35,25 @@ const label = {
 };
 
 
-const Field = ({ label: lbl, name, type = "text", placeholder, children, value, onChange }) => (
+const Field = ({ label: lbl, name, type = "text", placeholder, children, value, onChange, error }) => (
   <div style={{ display: "flex", flexDirection: "column" }}>
     <label style={label}>{lbl}</label>
-    {children || (
-      <input
-        type={type} name={name} value={value}
-        onChange={onChange} placeholder={placeholder}
-        required style={inp}
-        onFocus={e => e.target.style.borderBottomColor = "var(--gold)"}
-        onBlur={e => e.target.style.borderBottomColor = "var(--b)"}
-      />
+    {children ? (
+      <>
+        {children}
+        {error && <span style={{ color: "#ff4444", fontSize: 11, marginTop: 4 }}>{error}</span>}
+      </>
+    ) : (
+      <>
+        <input
+          type={type} name={name} value={value}
+          onChange={onChange} placeholder={placeholder}
+          style={{ ...inp, borderBottomColor: error ? "#ff4444" : "var(--b)" }}
+          onFocus={e => e.target.style.borderBottomColor = "var(--gold)"}
+          onBlur={e => e.target.style.borderBottomColor = error ? "#ff4444" : "var(--b)"}
+        />
+        {error && <span style={{ color: "#ff4444", fontSize: 11, marginTop: 4 }}>{error}</span>}
+      </>
     )}
   </div>
 );
@@ -56,27 +64,47 @@ const Row = ({ children, full }) => (
   </div>
 );
 
-export default function NeetForm() {
+const NeetForm = () => {
   const [form, setForm] = useState(initialState);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    if (type === "checkbox") {
-      setForm(prev => ({
-        ...prev,
-        subjects: checked
-          ? [...prev.subjects, value]
-          : prev.subjects.filter(s => s !== value),
-      }));
-    } else {
-      setForm(prev => ({ ...prev, [name]: value }));
+  const validate = () => {
+    const newErrors = {};
+    if (!form.fullName || form.fullName.trim().length < 3) {
+      newErrors.fullName = "Name must be at least 3 characters";
+    } else if (!/^[a-zA-Z\s]+$/.test(form.fullName)) {
+      newErrors.fullName = "Name must contain only letters and spaces";
     }
+    if (!form.dob || new Date(form.dob) > new Date()) newErrors.dob = "Valid Date of Birth is required";
+    if (!form.phone || !/^\d{10}$/.test(form.phone)) newErrors.phone = "Phone number must be 10 digits";
+    if (!form.city) newErrors.city = "City is required";
+    if (!form.category) newErrors.category = "Category is required";
+    if (!form.attempts) newErrors.attempts = "Attempts is required";
+    if (!form.targetScore || form.targetScore < 0 || form.targetScore > 720) newErrors.targetScore = "Score must be between 0 and 720";
+    if (!form.examYear) newErrors.examYear = "Exam Year is required";
+    if (form.subjects.length === 0) newErrors.subjects = "Select at least one weak subject";
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (errors[name]) {
+        setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+    setForm(prev => ({ ...prev, [name]: value }));
   };
 
   const toggleSubject = (s) => {
+    if (errors.subjects) {
+        setErrors(prev => ({ ...prev, subjects: undefined }));
+    }
+
     setForm(prev => ({
       ...prev,
       subjects: prev.subjects.includes(s)
@@ -87,9 +115,12 @@ export default function NeetForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
+    setLoading(true);
     try {
       if (!currentUser) {
          alert("No user logged in!");
+         setLoading(false);
          return;
       }
       await submitStudentForm(currentUser.uid, { ...form, email: currentUser.email });
@@ -98,6 +129,7 @@ export default function NeetForm() {
     } catch (err) {
       console.error("Error submitting form:", err);
       alert("Error: " + err.message);
+      setLoading(false);
     }
   };
 
@@ -140,14 +172,14 @@ export default function NeetForm() {
               Personal Information
             </p>
             <Row>
-              <Field label="Full Name" name="fullName" value={form.fullName} onChange={handleChange} placeholder="As per Aadhaar card" />
+              <Field label="Full Name" name="fullName" value={form.fullName} onChange={handleChange} placeholder="As per Aadhaar card" error={errors.fullName} />
             </Row>
             <Row>
-              <Field label="Date of Birth" name="dob" type="date" value={form.dob} onChange={handleChange} />
-              <Field label="Phone Number" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="Enter Phone Number(+91..)" />
+              <Field label="Date of Birth" name="dob" type="date" value={form.dob} onChange={handleChange} error={errors.dob} />
+              <Field label="Phone Number" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="Enter Phone Number(+91..)" error={errors.phone} />
             </Row>
             <Row>
-              <Field label="City / State" name="city" value={form.city} onChange={handleChange} placeholder="e.g. Mumbai, Maharashtra" />
+              <Field label="City / State" name="city" value={form.city} onChange={handleChange} placeholder="e.g. Mumbai, Maharashtra" error={errors.city} />
             </Row>
           </div>
 
@@ -157,13 +189,13 @@ export default function NeetForm() {
               Exam Information
             </p>
             <Row>
-              <Field label="Category" name="category">
+              <Field label="Category" name="category" error={errors.category}>
                 <select name="category" value={form.category} onChange={handleChange} required style={inp}>
                   <option value="">Select</option>
                   {["General","OBC","SC","ST"].map(c => <option key={c}>{c}</option>)}
                 </select>
               </Field>
-              <Field label="Number of Attempts" name="attempts">
+              <Field label="Number of Attempts" name="attempts" error={errors.attempts}>
                 <select name="attempts" value={form.attempts} onChange={handleChange} required style={inp}>
                   <option value="">Select</option>
                   {[1,2,3,4,5].map(n => <option key={n}>{n}</option>)}
@@ -171,8 +203,8 @@ export default function NeetForm() {
               </Field>
             </Row>
             <Row>
-              <Field label="Target Score" name="targetScore" type="number" value={form.targetScore} onChange={handleChange} placeholder="e.g. 650" />
-              <Field label="Exam Year" name="examYear">
+              <Field label="Target Score" name="targetScore" type="number" value={form.targetScore} onChange={handleChange} placeholder="e.g. 650" error={errors.targetScore} />
+              <Field label="Exam Year" name="examYear" error={errors.examYear}>
                 <select name="examYear" value={form.examYear} onChange={handleChange} required style={inp}>
                   <option value="">Select</option>
                   {["2025","2026","2027"].map(y => <option key={y}>{y}</option>)}
@@ -184,7 +216,8 @@ export default function NeetForm() {
                 <label style={label}>Weak Subjects</label>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", paddingTop: 4 }}>
                   {["Physics","Chemistry","Biology"].map(s => (
-                    <span key={s}
+                    <button key={s}
+                      type="button"
                       onClick={() => toggleSubject(s)}
                       style={{
                         padding: "9px 20px",
@@ -198,11 +231,13 @@ export default function NeetForm() {
                         cursor: "pointer",
                         transition: "all .2s",
                         fontWeight: 500,
+                        outline: "none",
                       }}>
                       {s}
-                    </span>
+                    </button>
                   ))}
                 </div>
+                {errors.subjects && <span style={{ color: "#ff4444", fontSize: 11, marginTop: 4, display: "block" }}>{errors.subjects}</span>}
               </div>
             </Row>
             <Row>
@@ -211,14 +246,14 @@ export default function NeetForm() {
 
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 32, borderTop: "1px solid var(--b)", marginTop: 8 }}>
               <span style={{ fontSize: 13, color: "var(--muted)", fontStyle: "italic" }}>All fields are required</span>
-              <button type="submit" style={{
+              <button type="submit" disabled={loading} style={{
                 display: "flex", alignItems: "center", gap: 5,
-                padding: "16px 28px", background: "var(--gold)", color: "var(--bg)",
+                padding: "16px 28px", background: loading ? "var(--muted)" : "var(--gold)", color: "var(--bg)",
                 border: "none", borderRadius: 3, fontSize: 15, fontWeight: 700,
                 fontFamily: "Syne, sans-serif", letterSpacing: 2,
-                textTransform: "uppercase", cursor: "pointer",
+                textTransform: "uppercase", cursor: loading ? "not-allowed" : "pointer",
               }}>
-                Submit <span>→</span>
+                {loading ? "Submitting..." : <>Submit <span>→</span></>}
               </button>
             </div>
           </div>
@@ -228,3 +263,5 @@ export default function NeetForm() {
     </>
   );
 }
+
+export default NeetForm;
