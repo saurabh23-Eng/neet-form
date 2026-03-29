@@ -59,6 +59,24 @@ export default function Dashboard() {
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "72px 48px" }}>
 
         {/* Header */}
+              <button
+        onClick={() => navigate("/all-students")}
+        style={{
+          background: "transparent",
+          border: "1px solid var(--gold)",
+          padding: "11px 22px",
+          color: "var(--gold)",
+          fontSize: 12,
+          letterSpacing: 1.5,
+          textTransform: "uppercase",
+          cursor: "pointer",
+          fontFamily: "DM Sans, sans-serif",
+          borderRadius: 2,
+          marginRight: 12,
+        }}
+        >
+        View All Students
+        </button>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 64 }}>
           <div>
             <p style={{ fontSize: 11, letterSpacing: 4, color: "var(--gold)", textTransform: "uppercase", marginBottom: 12, opacity: 0.8 }}>
@@ -123,4 +141,5 @@ export default function Dashboard() {
       </div>
     </>
   );
+  
 }
