@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+
 import { getAllStudents } from "../firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+
 
 export default function AllStudents() {
   const [students, setStudents] = useState([]);
@@ -243,33 +244,6 @@ export default function AllStudents() {
             ))}
           </div>
         )}
-
-        {/* Raw JSON View */}
-        <div style={{ marginTop: 48 }}>
-          <p style={{
-            fontSize: 11, letterSpacing: 3,
-            color: "var(--muted)", textTransform: "uppercase",
-            paddingBottom: 14,
-            borderBottom: "1px solid var(--b)",
-            marginBottom: 20,
-          }}>
-            Raw Firebase Response (JSON)
-          </p>
-          <pre style={{
-            background: "var(--s1)",
-            border: "1px solid var(--b)",
-            borderRadius: 4,
-            padding: 24,
-            fontSize: 12,
-            color: "var(--muted2)",
-            overflowX: "auto",
-            lineHeight: 1.6,
-            fontFamily: "monospace",
-          }}>
-            {JSON.stringify(students, null, 2)}
-          </pre>
-        </div>
-
       </div>
     </>
   );

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
 import { useAuth } from "../context/Authcontext";
 import { getStudentData } from "../firebase/firestore";
 import { logoutUser } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+
 
 export default function Dashboard() {
   const { currentUser } = useAuth();
@@ -11,12 +12,13 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!currentUser?.uid) return;
     const fetch = async () => {
       const result = await getStudentData(currentUser.uid);
       setData(result);
     };
     fetch();
-  }, []);
+  }, [currentUser?.uid]);
 
   const handleLogout = async () => {
     await logoutUser();
@@ -25,7 +27,7 @@ export default function Dashboard() {
 
   if (!data) return (
     <>
-      <Navbar />
+      {/* Add your previous header or leave blank if none was present */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "calc(100vh - 77px)", color: "var(--muted)" }}>
         Loading...
       </div>
@@ -56,27 +58,34 @@ export default function Dashboard() {
   return (
     <>
       <Navbar />
-      <div style={{ maxWidth: 760, margin: "0 auto", padding: "72px 48px" }}>
-
-        {/* Header */}
-              <button
-        onClick={() => navigate("/all-students")}
+      <div
         style={{
-          background: "transparent",
-          border: "1px solid var(--gold)",
-          padding: "11px 22px",
-          color: "var(--gold)",
-          fontSize: 12,
-          letterSpacing: 1.5,
-          textTransform: "uppercase",
-          cursor: "pointer",
-          fontFamily: "DM Sans, sans-serif",
-          borderRadius: 2,
-          marginRight: 12,
+          maxWidth: 760,
+          margin: "0 auto",
+          padding: "72px 48px",
+          width: "100%",
+          boxSizing: "border-box",
         }}
+        className="dashboard-main"
+      >
+        {/* <button
+          onClick={() => navigate("/all-students")}
+          style={{
+            background: "transparent",
+            border: "1px solid var(--gold)",
+            padding: "11px 22px",
+            color: "var(--gold)",
+            fontSize: 12,
+            letterSpacing: 1.5,
+            textTransform: "uppercase",
+            cursor: "pointer",
+            fontFamily: "DM Sans, sans-serif",
+            borderRadius: 2,
+            marginRight: 12,
+          }}
         >
-        View All Students
-        </button>
+          View All Students
+        </button> */}
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 64 }}>
           <div>
             <p style={{ fontSize: 11, letterSpacing: 4, color: "var(--gold)", textTransform: "uppercase", marginBottom: 12, opacity: 0.8 }}>

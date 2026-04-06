@@ -1,4 +1,8 @@
+
 import NeetForm from "../components/NeetForm";
-export default function FormPage() {
+
+function FormPage() {
   return <NeetForm />;
 }
+
+export default FormPage;

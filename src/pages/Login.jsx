@@ -1,7 +1,8 @@
 import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { loginUser, loginWithGoogle } from "../firebase/auth";
-import Navbar from "../components/Navbar";
+
 
 const inp = {
   width: "100%",
@@ -45,7 +46,37 @@ export default function Login() {
 
   return (
     <>
-      <Navbar />
+      {/* Custom top bar: left title, right hamburger */}
+      <div style={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "18px 32px 18px 24px",
+        background: "var(--s1)",
+        borderBottom: "1.5px solid var(--b)",
+        boxShadow: "0 2px 16px 0 rgba(49, 80, 235, 0.04)",
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+      }}>
+        <span style={{
+          fontFamily: "Syne, sans-serif",
+          fontWeight: 800,
+          fontSize: 22,
+          color: "var(--gold)",
+          letterSpacing: 2,
+          textTransform: "uppercase",
+        }}>Neet 2026</span>
+        <span style={{ cursor: "pointer", padding: 8 }} aria-label="Open sidebar">
+          {/* Hamburger icon */}
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect y="7" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
+            <rect y="14" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
+            <rect y="21" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
+          </svg>
+        </span>
+      </div>
       <div
         style={{
           display: "flex",

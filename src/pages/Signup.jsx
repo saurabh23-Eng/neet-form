@@ -1,7 +1,9 @@
 import { useState } from "react";
+
+
 import { useNavigate } from "react-router-dom";
 import { registerUser, loginWithGoogle } from "../firebase/auth";
-import Navbar from "../components/Navbar";
+
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -26,6 +28,10 @@ export default function Signup() {
     setError("");
     if (password !== confirm) {
       setError("Passwords do not match.");
+      return;
+    }
+    if (!email.includes("@") || !email.includes(".")) {
+      setError("Please enter a valid email address.");
       return;
     }
     if (password.length < 6) {
@@ -65,7 +71,38 @@ export default function Signup() {
 
   return (
     <>
-      <Navbar />
+
+      {/* Custom top bar: left title, right hamburger */}
+      <div style={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "18px 32px 18px 24px",
+        background: "var(--s1)",
+        borderBottom: "1.5px solid var(--b)",
+        boxShadow: "0 2px 16px 0 rgba(49, 80, 235, 0.04)",
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+      }}>
+        <span style={{
+          fontFamily: "Syne, sans-serif",
+          fontWeight: 800,
+          fontSize: 22,
+          color: "var(--gold)",
+          letterSpacing: 2,
+          textTransform: "uppercase",
+        }}>Neet 2026</span>
+        <span style={{ cursor: "pointer", padding: 8 }} aria-label="Open sidebar">
+          {/* Hamburger icon */}
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect y="7" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
+            <rect y="14" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
+            <rect y="21" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
+          </svg>
+        </span>
+      </div>
 
       {/* full screen centered container */}
       <div style={{
@@ -74,56 +111,48 @@ export default function Signup() {
         alignItems: "center",
         justifyContent: "center",
         padding: "24px",
+        background: "var(--bg)",
       }}>
 
-        {/* card */}
+        {/* card - now styled as login card */}
         <div style={{
           width: "100%",
-          maxWidth: 460,
+          maxWidth: 400,
           background: "var(--s1)",
           border: "1px solid var(--b)",
-          borderRadius: 4,
-          padding: "48px 44px",
+          borderRadius: 8,
+          padding: "40px 32px 32px 32px",
+          boxShadow: "0 4px 24px 0 rgba(49, 80, 235, 0.10)",
         }}>
 
-          {/* card header */}
-          <p style={{
-            fontSize: 11,
-            letterSpacing: 4,
-            color: "var(--gold)",
-            textTransform: "uppercase",
-            marginBottom: 12,
-            opacity: 0.8,
-          }}>
-            New Student
-          </p>
-
+          {/* card header - login style */}
           <h1 style={{
             fontFamily: "Syne, sans-serif",
-            fontSize: 28,
-            fontWeight: 700,
-            letterSpacing: -0.5,
-            marginBottom: 9,
-            lineHeight: 1.2,
+            fontSize: 26,
+            fontWeight: 800,
+            letterSpacing: 0.5,
+            marginBottom: 8,
+            color: "var(--gold2)",
+            textAlign: "center",
+            textTransform: "uppercase",
           }}>
-            Create your account
+            Login
           </h1>
-
           <p style={{
             fontSize: 13,
             color: "var(--muted2)",
-            marginBottom: 32,
-            fontWeight: 300,
+            marginBottom: 28,
+            fontWeight: 400,
             lineHeight: 1.6,
+            textAlign: "center",
           }}>
-            Register to access the NEET 2026 student portal
+            Welcome back! Please sign in to your NEET 2026 account.
           </p>
-
-          {/* divider */}
           <div style={{
             height: 1,
             background: "var(--b)",
-            marginBottom: 32,
+            marginBottom: 24,
+            opacity: 0.5,
           }} />
 
           {/* error */}
