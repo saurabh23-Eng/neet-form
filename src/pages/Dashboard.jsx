@@ -78,7 +78,7 @@ export default function Dashboard() {
         >
           {/* Left side */}
           <div>
-            <p style={{ fontSize: 10, color: "var(--gold)" }}>
+            <p style={{ fontSize: 10, color: "var(--nav)" }}>
               Registered Student
             </p>
 
@@ -97,6 +97,7 @@ export default function Dashboard() {
             <button
               onClick={handleLogout}
               style={{
+                color: "var(--b)",
                 padding: "10px 16px",
                 border: "1px solid var(--b)",
                 background: "transparent",
@@ -113,7 +114,7 @@ export default function Dashboard() {
         <div
           style={{
             padding: "14px",
-            background: "rgba(184,149,90,0.1)",
+            background: "white",
             marginBottom: 30,
             fontSize: 13,
           }}

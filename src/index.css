@@ -2,15 +2,16 @@
 
 :root {
   --bg: #040404;
-  --s1: #191f35;
+  --s1: #8c9ee0;
   --s2: #020d2c;
   --b: #f8f8f7;
-  --gold: #3150eb;
+  --gold: #093cd2;
   --gold2: #e2ccaa;
   --text: #818586;
   --muted: #feffff;
-  --muted2: #a4b7cd;/*color for secondary text and icons*/
+  --muted2: #fbfcfd;/*color for secondary text and icons*/
   --box:rgb(0, 0, 0);
+  --nav:rgb(2, 255, 225);
 }
 
 html, body, #root {

@@ -78,9 +78,9 @@ export default function Signup() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "18px 32px 18px 24px",
-        background: "var(--s1)",
-        borderBottom: "1.5px solid var(--b)",
+        padding: "10px 32px 10px 24px",
+        background: "var(--bg)",
+        borderBottom: "1px solid var(--b)",
         boxShadow: "0 2px 16px 0 rgba(49, 80, 235, 0.04)",
         position: "sticky",
         top: 0,
@@ -88,18 +88,17 @@ export default function Signup() {
       }}>
         <span style={{
           fontFamily: "Syne, sans-serif",
-          fontWeight: 800,
+          fontWeight: 700,
           fontSize: 22,
-          color: "var(--gold)",
+          color: "var(--nav)",
           letterSpacing: 2,
-          textTransform: "uppercase",
         }}>Neet 2026</span>
-        <span style={{ cursor: "pointer", padding: 8 }} aria-label="Open sidebar">
+        <span style={{ cursor: "pointer", padding: 1 }} aria-label="Open sidebar">
           {/* Hamburger icon */}
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <rect y="7" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
-            <rect y="14" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
-            <rect y="21" width="32" height="3.5" rx="1.5" fill="#e2ccaa" />
+            <rect y="7" width="32" height="3.5" rx="1.5" fill="#fbfbfb" />
+            <rect y="14" width="32" height="3.5" rx="1.5" fill="#fbfbfb" />
+            <rect y="21" width="32" height="3.5" rx="1.5" fill="#fbfbfb" />
           </svg>
         </span>
       </div>
@@ -117,10 +116,10 @@ export default function Signup() {
         {/* card - now styled as login card */}
         <div style={{
           width: "100%",
-          maxWidth: 400,
-          background: "var(--s1)",
+          maxWidth: 450,
+          background: "var(--bg)",
           border: "1px solid var(--b)",
-          borderRadius: 8,
+          borderRadius: 10,
           padding: "40px 32px 32px 32px",
           boxShadow: "0 4px 24px 0 rgba(49, 80, 235, 0.10)",
         }}>
@@ -128,25 +127,25 @@ export default function Signup() {
           {/* card header - login style */}
           <h1 style={{
             fontFamily: "Syne, sans-serif",
-            fontSize: 26,
-            fontWeight: 800,
-            letterSpacing: 0.5,
-            marginBottom: 8,
-            color: "var(--gold2)",
+            fontSize: 18,
+            fontWeight: 750,
+            letterSpacing: 2,
+            marginBottom: 2,
+            color: "var(--nav)",
             textAlign: "center",
-            textTransform: "uppercase",
+            transform: "uppercase",
           }}>
-            Login
+            Signup
           </h1>
           <p style={{
             fontSize: 13,
-            color: "var(--muted2)",
+            color: "var(--text)",
             marginBottom: 28,
             fontWeight: 400,
             lineHeight: 1.6,
             textAlign: "center",
           }}>
-            Welcome back! Please sign in to your NEET 2026 account.
+            Welcome back! Please sign up to your NEET 2026 account.
           </p>
           <div style={{
             height: 1,

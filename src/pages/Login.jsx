@@ -51,8 +51,8 @@ export default function Login() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "12px 16px", // ✅ mobile friendly
-          background: "var(--s1)",
+          padding: "12px 16px", 
+          background: "var(--bg)",
           borderBottom: "1px solid var(--b)",
           position: "sticky",
           top: 0,
@@ -62,18 +62,18 @@ export default function Login() {
         <span
           style={{
             fontFamily: "Syne, sans-serif",
-            fontWeight: 800,
-            fontSize: "clamp(16px, 4vw, 22px)", // ✅ responsive
-            color: "var(--gold)",
+            fontWeight: 600,
+            fontSize: "clamp(16px, 4vw, 22px)", 
+            color: "var(--nav)",
           }}
         >
           Neet 2026
         </span>
 
         <div style={{ width: 28, height: 20 }}>
-          <div style={{ height: 3, background: "#e2ccaa", marginBottom: 5 }} />
-          <div style={{ height: 3, background: "#e2ccaa", marginBottom: 5 }} />
-          <div style={{ height: 3, background: "#e2ccaa" }} />
+          <div style={{ height: 3, background: "#fbfbfb", marginBottom: 5 }} />
+          <div style={{ height: 3, background: "#fbfbfb", marginBottom: 5 }} />
+          <div style={{ height: 3, background: "#fbfbfb" }} />
         </div>
       </div>
 
@@ -84,22 +84,22 @@ export default function Login() {
           justifyContent: "center",
           alignItems: "center",
           minHeight: "calc(100vh - 60px)",
-          padding: "16px", // ✅ prevent edge sticking
+          padding: "16px", // prevent edge sticking
         }}
       >
         <div
           style={{
             width: "100%",
             maxWidth: 420,
-            padding: "clamp(20px, 5vw, 40px)", // ✅ responsive padding
+            padding: "clamp(20px, 5vw, 40px)", // responsive padding
             border: "1px solid var(--b)",
-            borderRadius: 12,
-            background: "rgba(255,255,255,0.02)",
+            borderRadius: 11,
+            background: "rgba(245, 244, 244, 0.02)",
           }}
         >
           {/* Heading */}
           <div style={{ textAlign: "center", marginBottom: 24 }}>
-            <p style={{ fontSize: 10, letterSpacing: 2, color: "var(--gold)" }}>
+            <p style={{ fontSize: 25, letterSpacing: 2, color: "var(--nav)" }}>
               Student Portal
             </p>
 

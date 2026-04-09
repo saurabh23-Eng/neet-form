@@ -118,8 +118,8 @@ const NeetForm = () => {
     }
     if (!form.dob || new Date(form.dob) > new Date())
       newErrors.dob = "Valid Date of Birth is required";
-    if (!form.phone || !/^\d{10}$/.test(form.phone))
-      newErrors.phone = "Phone number must be 10 digits";
+    if (!form.phone || !/^\+\d{1,3}\d{7,12}$/.test(form.phone))
+      newErrors.phone = "Enter phone with country code (e.g. +911234567890)";
     if (!form.city) newErrors.city = "City is required";
     if (!form.category) newErrors.category = "Category is required";
     if (!form.attempts) newErrors.attempts = "Attempts is required";
@@ -196,7 +196,7 @@ const NeetForm = () => {
               fontFamily: "Syne, sans-serif",
               fontSize: 32,
               fontWeight: 700,
-              color: "var(--gold)",
+              color: "var(--nav)",
             }}
           >
             Submitted
@@ -231,7 +231,7 @@ const NeetForm = () => {
                 style={{
                   fontSize: 11,
                   letterSpacing: 4,
-                  color: "var(--gold)",
+                  color: "var(--nav)",
                   textTransform: "uppercase",
                   marginBottom: 16,
                   opacity: 0.8,

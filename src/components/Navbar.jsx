@@ -16,7 +16,7 @@ export default function Navbar() {
         style={{
           fontFamily: "Syne, sans-serif",
           fontSize: "clamp(14px, 4vw, 18px)", 
-          fontWeight: 700,
+          fontWeight: 600,
           letterSpacing: 3,
           color: "var(--gold)",
         }}
