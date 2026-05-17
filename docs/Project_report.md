@@ -4,7 +4,7 @@
 
 ## CERTIFICATE PAGE
 
-```
+
 CERTIFICATE
 
 This is to certify that the project entitled
@@ -13,44 +13,49 @@ This is to certify that the project entitled
 
 has been successfully completed by
 
-[Student Name]
-Roll No: [Roll Number]
+Saurabh Maurya (2308390100058),
+Dhruv Narayan Singh (2308390100026),
+Chandraj Kushwaha (2308390100024),
+Ayush Maurya (2308390100019),
 
-in partial fulfillment of the requirements for the award of the degree of
-[Degree Name] in [Department]
-from [College Name], [University Name]
+in fulfillment of the requirements for Software Engineering Lab (BCS651) in Computer Science and Engineering Department
+from Rajkiya Engineering College , Kannauj, Dr. APJ Abdul Kalam Technical University , Lucknow
 during the academic year 2025–2026.
 
-Project Guide:                    Head of Department:
-[Guide Name]                      [HOD Name]
-[Designation]                     [Designation]
+Project Guide:                        Head of Department:
+Mr.Naveen Tiwari                      Dr. BDK Patro
+Mrs. Aishwarya Kumar                  Associate Professor
+Computer Science & Engineering 
+Department 
 
-Date:                             Place:
-```
+Date: 17 May 2026                     Place:Kannauj 
+
 
 ---
 
 ## DECLARATION
+We, Saurabh Maurya , Dhruv Narayan Singh , Chandraj Kushwaha , Ayush Maurya, students of B.Tech in Computer Science and Engineering at Rajkiya Engineering College , Kannauj, hereby declare that the project entitled "NEET Examination Portal Using React and Firebase" submitted in fulfillment of the requirements is my own original work carried out under the guidance of Mr. Naveen Tiwari and Mrs. Aishwarya Kumar.
 
-I, [Student Name], student of [Degree] in [Department] at [College Name], hereby declare that the project entitled "NEET Examination Portal Using React and Firebase" submitted in partial fulfillment of the degree requirements is my own original work carried out under the guidance of [Guide Name].
+I further declare that this project has not been submitted to any other university or institution.
 
-I further declare that this project has not been submitted to any other university or institution for the award of any degree or diploma.
+**Date: 17 May 2026**
+**Place: Kannauj**
 
-**Date:**
-**Place:**
-**Signature:** [Student Name]
 
 ---
 
 ## ACKNOWLEDGEMENT
 
-I would like to express my sincere gratitude to [Guide Name] for their invaluable guidance, encouragement, and support throughout this project. I extend my thanks to the Head of Department, [HOD Name], and all faculty members of the [Department] for their continuous support.
+I would like to express my sincere gratitude to Mr. Naveen Tiwari and Mrs. Aishwarya Kumar for their invaluable guidance, encouragement, and support throughout this project. I extend my thanks to the Head of Department, Dr. BDK Patro, and all faculty members of the Computer Science and Engineering Department for their continuous support.
 
-I am also grateful to [College Name] for providing the necessary infrastructure and resources. Special thanks to the Firebase and React open-source communities whose documentation and tools made this project possible.
+I am also grateful to Rajkiya Engineering College, Kannauj for providing the necessary infrastructure and resources. Special thanks to the Firebase and React open-source communities whose documentation and tools made this project possible.
 
 Finally, I thank my family and friends for their moral support and encouragement.
 
-**[Student Name]**
+**Saurabh Maurya ,
+Dhruv Narayan Singh , 
+Chandraj Kushwaha , 
+Ayush Maurya**
 
 ---
 
