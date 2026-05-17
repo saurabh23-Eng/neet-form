@@ -4,21 +4,24 @@
 
 ## TITLE PAGE
 
-```
+
 SOFTWARE REQUIREMENTS SPECIFICATION
 
 Project Title: NEET Examination Portal Using React and Firebase
 
-Prepared by: [Student Name]
-Roll No: [Roll Number]
-Department: [Department Name]
-College: [College Name]
-University: [University Name]
-Guide: [Guide Name]
+Prepared by:
+Saurabh Maurya (2308390100058),
+Dhruv Narayan Singh (2308390100026),
+Chandraj Kushwaha (2308390100024),
+Ayush Maurya (2308390100019)
+Department: Computer Science and Engineering 
+College: Rajkiya Engineering College, Kannauj 
+University: Dr. APJ Abdul Kalam Technical University, Lucknow 
+Guide: Mr. Naveen Tiwari, Mrs. Aishwarya Kumar 
 Academic Year: 2025–2026
 Version: 1.0
-Date: [Date]
-```
+Date: 17 May 2026
+
 
 ---
 
