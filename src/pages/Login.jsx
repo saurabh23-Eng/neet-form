@@ -51,8 +51,8 @@ export default function Login() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "12px 16px", 
-          background: "var(--bg)",
+          padding: "12px 16px",
+          background: "var(--s1)",
           borderBottom: "1px solid var(--b)",
           position: "sticky",
           top: 0,
@@ -63,7 +63,7 @@ export default function Login() {
           style={{
             fontFamily: "Syne, sans-serif",
             fontWeight: 600,
-            fontSize: "clamp(16px, 4vw, 22px)", 
+            fontSize: "clamp(16px, 4vw, 22px)",
             color: "var(--nav)",
           }}
         >
